@@ -8,12 +8,30 @@
   <style>
     :root{
       --dimension: 150px;
+      --transform-value: calc(var(--dimension) / 2);
+      --transform-value-negative: calc(var(--transform-value) * -1); 
     }
     *{ 
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+    @keyframes Up-Down{
+      from {
+        transform: translateY(var(--transform-value-negative));
+      }
+      to {
+        transform: translateY(var(--transform-value));
+      }
+    }
+    @keyframes Left-Right{
+      from {
+        transform: translateX(var(--transform-value-negative));
+      }
+      to {
+        transform: translateX(var(--transform-value));
+      }
+    } 
   </style>
 
 </head>
@@ -29,7 +47,6 @@
            style="
              height: calc(var(--dimension) * 2);
              width: calc(var(--dimension) * 3);
-             border: 1px solid black;
              display: grid;
              grid-template-areas: 
                'a . b'
@@ -45,6 +62,7 @@
            width: 100%;
            background-color: red;
            border-radius: 50%;
+           animation: Up-Down 1s infinite alternate linear;
          ">
     </div>
 
@@ -56,6 +74,7 @@
            height: 100%;
            background-color: yellow;
            clip-path: polygon(50% 0, 100% 100%, 0 100%);
+           animation: Left-Right 1s infinite alternate linear;
          ">
     </div>
 
