@@ -6,16 +6,22 @@
   <title>Test</title>
 
   <style>
-    :root{
-      --dimension: 150px;
-      --transform-value: calc(var(--dimension) / 2);
-      --transform-value-negative: calc(var(--transform-value) * -1); 
-    }
     *{ 
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+
+    :root{
+      --dimension: 150px;
+      --transform-value: calc(var(--dimension) / 2);
+      --transform-value-negative: calc(var(--transform-value) * -1); 
+    }
+
+    @media (max-width: 600px) {
+      :root{ --dimension: 100px; }
+    }
+   
     @keyframes Up-Down{
       from {
         transform: translateY(var(--transform-value-negative));
@@ -24,6 +30,7 @@
         transform: translateY(var(--transform-value));
       }
     }
+    
     @keyframes Left-Right{
       from {
         transform: translateX(var(--transform-value-negative));
